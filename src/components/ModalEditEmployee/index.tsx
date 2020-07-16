@@ -2,7 +2,7 @@ import React, { useRef, useCallback } from 'react';
 
 import { FiCheckSquare } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
-import { Form, Button, Icon, Text, Title } from './styles';
+import { Form, Button, Text, Icon, Title } from './styles';
 import Modal from '../Modal';
 import Input from '../Input';
 
@@ -20,27 +20,41 @@ interface IRole {
   description: string;
 }
 
+interface IEditEmployee {
+  name: string;
+  image: string;
+  secondName: string;
+  role: string;
+  birth: string;
+  salary: boolean;
+}
+
 interface IModalProps {
   isOpen: boolean;
   setIsOpen: () => void;
-  handleAddEmployee: (employee: IEmployee) => void;
+  handleUpdateEmployee: (employee: IEmployee) => void;
+  editingEmployee: IEmployee;
 }
 
-const ModalAddEmployee: React.FC<IModalProps> = ({
+const ModalEditEmployee: React.FC<IModalProps> = ({
   isOpen,
   setIsOpen,
-  handleAddEmployee,
+  editingEmployee,
+  handleUpdateEmployee,
 }) => {
   const formRef = useRef<FormHandles>(null);
 
-  const handleSubmit = useCallback(async data => {
-    // TODO ADD A NEW FOOD AND CLOSE THE MODAL
-  }, []);
+  const handleSubmit = useCallback(
+    async (data: IEditEmployee) => {
+      // EDIT A FOOD PLATE AND CLOSE THE MODAL
+    },
+    [setIsOpen],
+  );
 
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-      <Form ref={formRef} onSubmit={handleSubmit}>
-        <Title>Novo Funcionario</Title>
+      <Form ref={formRef} onSubmit={handleSubmit} initialData={editingEmployee}>
+        <Title>Editar Funcionário</Title>
         <Input name="name" placeholder="Nome" />
 
         <Input name="secondName" placeholder="Sobrenome" />
@@ -50,7 +64,7 @@ const ModalAddEmployee: React.FC<IModalProps> = ({
         <Input name="salary" placeholder="Salário" />
 
         <Button type="submit">
-          <Text>Adicionar Funcionário</Text>
+          <Text>Editar Funcionário</Text>
           <Icon>
             <FiCheckSquare size={24} />
           </Icon>
@@ -60,4 +74,4 @@ const ModalAddEmployee: React.FC<IModalProps> = ({
   );
 };
 
-export default ModalAddEmployee;
+export default ModalEditEmployee;

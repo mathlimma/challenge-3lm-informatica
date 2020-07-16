@@ -4,33 +4,40 @@ import Header from '../../components/Header';
 
 import api from '../../services/api';
 
-import Food from '../../components/Food';
+import EmployeeItem from '../../components/Employee';
 import ModalAddEmployee from '../../components/ModalAddEmployee';
-import ModalEditFood from '../../components/ModalEditFood';
+import ModalEditEmployee from '../../components/ModalEditEmployee';
 
-import { FoodsContainer } from './styles';
+import { Container } from './styles';
 
 interface IEmployee {
   id: number;
+  image: string;
   name: string;
   secondName: string;
-  role: string;
+  role: IRole;
   birth: string;
   salary: boolean;
 }
 
+interface IRole {
+  description: string;
+}
+
 const Dashboard: React.FC = () => {
-  const [foods, setFoods] = useState<IEmployee[]>([]);
-  const [editingFood, setEditingFood] = useState<IEmployee>({} as IEmployee);
+  const [Employee, setEmployee] = useState<IEmployee[]>([]);
+  const [editingEmployee, setEditingEmployee] = useState<IEmployee>(
+    {} as IEmployee,
+  );
   const [modalOpen, setModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
 
   useEffect(() => {
-    async function loadFoods(): Promise<void> {
+    async function loadEmployees(): Promise<void> {
       // TODO LOAD FOODS
     }
 
-    loadFoods();
+    loadEmployees();
   }, []);
 
   async function handleAddEmployee(employee: IEmployee): Promise<void> {
@@ -41,11 +48,11 @@ const Dashboard: React.FC = () => {
     }
   }
 
-  async function handleUpdateFood(employee: IEmployee): Promise<void> {
+  async function handleUpdateEmployee(employee: IEmployee): Promise<void> {
     // TODO UPDATE A FOOD PLATE ON THE API
   }
 
-  async function handleDeleteFood(id: number): Promise<void> {
+  async function handleDeleteEmployee(id: number): Promise<void> {
     // TODO DELETE A FOOD PLATE FROM THE API
   }
 
@@ -57,7 +64,7 @@ const Dashboard: React.FC = () => {
     setEditModalOpen(!editModalOpen);
   }
 
-  function handleEditFood(employee: IEmployee): void {
+  function handleEditEmployee(employee: IEmployee): void {
     // TODO SET THE CURRENT EDITING FOOD ID IN THE STATE
   }
 
@@ -69,24 +76,24 @@ const Dashboard: React.FC = () => {
         setIsOpen={toggleModal}
         handleAddEmployee={handleAddEmployee}
       />
-      {/* <ModalEditFood
+      <ModalEditEmployee
         isOpen={editModalOpen}
         setIsOpen={toggleEditModal}
-        editingFood={editingFood}
-        handleUpdateFood={handleUpdateFood}
-      /> */}
+        editingEmployee={editingEmployee}
+        handleUpdateEmployee={handleUpdateEmployee}
+      />
 
-      {/* <FoodsContainer data-testid="foods-list">
-        {foods &&
-          foods.map(food => (
-            <Food
-              key={food.id}
-              food={food}
-              handleDelete={handleDeleteFood}
-              handleEditFood={handleEditFood}
+      <Container>
+        {Employee &&
+          Employee.map(Employee => (
+            <EmployeeItem
+              key={Employee.id}
+              employee={Employee}
+              handleDelete={handleDeleteEmployee}
+              handleEditEmployee={handleEditEmployee}
             />
           ))}
-      </FoodsContainer> */}
+      </Container>
     </>
   );
 };

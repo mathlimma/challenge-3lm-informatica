@@ -1,28 +1,49 @@
 {
-  "foods": [
+  "employees": [
     {
       "id": 1,
-      "name": "Ao molho",
-      "description": "Macarrão ao molho branco, fughi e cheiro verde das montanhas.",
-      "price": "19.90",
-      "available": true,
-      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food1.png"
+      "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.123rf.com%2Fphoto_94910847_enfrente-a-express%25C3%25A3o-de-um-homem-com-cabelo-louro-feliz-emo%25C3%25A7%25C3%25B5es-masculinas-personagem-de-desenho-animado.html&psig=AOvVaw0YTj-FetmpwSnGgahf_SP9&ust=1595001698041000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjWwr-S0uoCFQAAAAAdAAAAABAD",
+      "name": "Augusto",
+      "secondName": "Guilherme",
+      "role": { "description": "Scrum master" },
+      "birth": "15/10/2000",
+      "salary": "R$ 1570,00"
     },
     {
       "id": 2,
-      "name": "Veggie",
-      "description": "Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.",
-      "price": "21.90",
-      "available": true,
-      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food2.png"
+      "image": "https://previews.123rf.com/images/vectorkif/vectorkif1707/vectorkif170700006/81494117-express%C3%A3o-facial-de-uma-mulher-neutra-calma-emo%C3%A7%C3%B5es-femininas-personagem-de-desenho-animado-atraente-ilu.jpg",
+      "name": "Gabriella",
+      "secondName": "Genova",
+      "role": { "description": "Gerente" },
+      "birth": "22/09/1988",
+      "salary": "R$ 7500,00"
     },
     {
       "id": 3,
-      "name": "A la Camarón",
-      "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
-      "price": "25.90",
-      "available": true,
-      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png"
+      "image": "https://w7.pngwing.com/pngs/200/328/png-transparent-cartoon-female-illustration-cartoon-professional-women-cartoon-character-child-holidays.png",
+      "name": "Ana",
+      "secondName": "Maria",
+      "role": { "description": "Estagiario" },
+      "birth": "09/04/2002",
+      "salary": "R$ 1000,00"
+    },
+    {
+      "id": 4,
+      "image": "https://thumbs.dreamstime.com/z/desenhos-animados-profissionais-do-homem-14788435.jpg",
+      "name": "Marcos",
+      "secondName": "Silva",
+      "role": { "description": "Dev Java" },
+      "birth": "12/05/1990",
+      "salary": "R$ 4500,00"
+    },
+    {
+      "id": 5,
+      "image": "https://png.pngtree.com/png-clipart/20190611/original/pngtree-cartoon-camera-man-painted-hat-png-image_2554288.jpg",
+      "name": "Luis",
+      "secondName": "Arantes",
+      "role": { "description": "Dev ReactJs" },
+      "birth": "01/12/1994",
+      "salary": "R$ 3000,00"
     }
   ]
 }
