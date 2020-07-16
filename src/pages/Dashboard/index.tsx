@@ -35,10 +35,10 @@ const Dashboard: React.FC = () => {
   const [editingEmployee, setEditingEmployee] = useState<IEmployee>(
     {} as IEmployee,
   );
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(true);
   const [editModalOpen, setEditModalOpen] = useState(false);
 
-  const { getUsersRequest } = UserActions;
+  const { getUsersRequest, addUserRequest } = UserActions;
   const { users } = useSelector((state: IRootState) => state.user);
   const dispatch = useDispatch();
 
@@ -49,14 +49,9 @@ const Dashboard: React.FC = () => {
     loadEmployees();
   }, []);
 
-  console.log(users);
-
   async function handleAddEmployee(employee: IEmployee): Promise<void> {
-    try {
-      // TODO ADD A NEW FOOD PLATE TO THE API
-    } catch (err) {
-      console.log(err);
-    }
+    console.log(employee);
+    dispatch(addUserRequest(employee));
   }
 
   async function handleUpdateEmployee(employee: IEmployee): Promise<void> {

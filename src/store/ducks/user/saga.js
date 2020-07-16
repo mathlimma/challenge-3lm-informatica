@@ -12,10 +12,10 @@ export function* getUsers() {
   }
 }
 
-export function* addUser({ user }) {
+export function* addUser({ employee }) {
   const { addUserSuccess, addUserFailure } = UsersActions;
   try {
-    yield call(api.post, '/employees', user);
+    yield call(api.post, '/employees', employee);
     yield put(addUserSuccess());
   } catch (error) {
     yield put(addUserFailure());

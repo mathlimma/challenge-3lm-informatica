@@ -12,7 +12,7 @@ export const { Types, Creators } = createActions({
   getUsersFailure: [],
 
   //add
-  addUserRequest: ['user'],
+  addUserRequest: ['employee'],
   addUserSuccess: ['user'],
   addUserFailure: [],
 

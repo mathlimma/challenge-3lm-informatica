@@ -34,13 +34,15 @@ const ModalAddEmployee: React.FC<IModalProps> = ({
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(async data => {
-    // TODO ADD A NEW FOOD AND CLOSE THE MODAL
+    handleAddEmployee(data);
   }, []);
 
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <Form ref={formRef} onSubmit={handleSubmit}>
         <Title>Novo Funcionario</Title>
+
+        <Input name="image" placeholder="url da foto" />
         <Input name="name" placeholder="Nome" />
 
         <Input name="secondName" placeholder="Sobrenome" />
