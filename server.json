@@ -2,10 +2,12 @@
   "employees": [
     {
       "id": 1,
-      "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.123rf.com%2Fphoto_94910847_enfrente-a-express%25C3%25A3o-de-um-homem-com-cabelo-louro-feliz-emo%25C3%25A7%25C3%25B5es-masculinas-personagem-de-desenho-animado.html&psig=AOvVaw0YTj-FetmpwSnGgahf_SP9&ust=1595001698041000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjWwr-S0uoCFQAAAAAdAAAAABAD",
+      "image": "https://i.graphicmama.com/uploads/2016/3/56f131d04bd81-Alfred-the-Careerist2.png",
       "name": "Augusto",
       "secondName": "Guilherme",
-      "role": { "description": "Scrum master" },
+      "role": {
+        "description": "Scrum master"
+      },
       "birth": "15/10/2000",
       "salary": "R$ 1570,00"
     },
@@ -14,7 +16,9 @@
       "image": "https://previews.123rf.com/images/vectorkif/vectorkif1707/vectorkif170700006/81494117-express%C3%A3o-facial-de-uma-mulher-neutra-calma-emo%C3%A7%C3%B5es-femininas-personagem-de-desenho-animado-atraente-ilu.jpg",
       "name": "Gabriella",
       "secondName": "Genova",
-      "role": { "description": "Gerente" },
+      "role": {
+        "description": "Gerente"
+      },
       "birth": "22/09/1988",
       "salary": "R$ 7500,00"
     },
@@ -23,7 +27,9 @@
       "image": "https://w7.pngwing.com/pngs/200/328/png-transparent-cartoon-female-illustration-cartoon-professional-women-cartoon-character-child-holidays.png",
       "name": "Ana",
       "secondName": "Maria",
-      "role": { "description": "Estagiario" },
+      "role": {
+        "description": "Estagiario"
+      },
       "birth": "09/04/2002",
       "salary": "R$ 1000,00"
     },
@@ -32,7 +38,9 @@
       "image": "https://thumbs.dreamstime.com/z/desenhos-animados-profissionais-do-homem-14788435.jpg",
       "name": "Marcos",
       "secondName": "Silva",
-      "role": { "description": "Dev Java" },
+      "role": {
+        "description": "Dev Java"
+      },
       "birth": "12/05/1990",
       "salary": "R$ 4500,00"
     },
@@ -41,8 +49,21 @@
       "image": "https://png.pngtree.com/png-clipart/20190611/original/pngtree-cartoon-camera-man-painted-hat-png-image_2554288.jpg",
       "name": "Luis",
       "secondName": "Arantes",
-      "role": { "description": "Dev ReactJs" },
+      "role": {
+        "description": "Dev ReactJs"
+      },
       "birth": "01/12/1994",
+      "salary": "R$ 3000,00"
+    },
+    {
+      "id": 6,
+      "image": "https://i.pinimg.com/474x/5d/f2/3c/5df23ca9dfa4b68a7ddcedb85edc8121.jpg",
+      "name": "Matheus",
+      "secondName": "Lima",
+      "role": {
+        "description": "Fullstack dev"
+      },
+      "birth": "24/12/1998",
       "salary": "R$ 3000,00"
     }
   ]

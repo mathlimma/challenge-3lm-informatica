@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../components/Header';
-
-import api from '../../services/api';
-
 import EmployeeItem from '../../components/Employee';
 import ModalAddEmployee from '../../components/ModalAddEmployee';
 import ModalEditEmployee from '../../components/ModalEditEmployee';
+import { Creators as UserActions } from '../../store/ducks/user';
 
-import { Container } from './styles';
+import { Container, Content } from './styles';
 
 interface IEmployee {
   id: number;
@@ -24,21 +22,34 @@ interface IRole {
   description: string;
 }
 
+interface IRootState {
+  user: IUser;
+}
+
+interface IUser {
+  users: IEmployee[];
+  loading: boolean;
+}
+
 const Dashboard: React.FC = () => {
-  const [Employee, setEmployee] = useState<IEmployee[]>([]);
   const [editingEmployee, setEditingEmployee] = useState<IEmployee>(
     {} as IEmployee,
   );
   const [modalOpen, setModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
 
+  const { getUsersRequest } = UserActions;
+  const { users } = useSelector((state: IRootState) => state.user);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     async function loadEmployees(): Promise<void> {
-      // TODO LOAD FOODS
+      dispatch(getUsersRequest());
     }
-
     loadEmployees();
   }, []);
+
+  console.log(users);
 
   async function handleAddEmployee(employee: IEmployee): Promise<void> {
     try {
@@ -69,8 +80,7 @@ const Dashboard: React.FC = () => {
   }
 
   return (
-    <>
-      <Header openModal={toggleModal} />
+    <Container>
       <ModalAddEmployee
         isOpen={modalOpen}
         setIsOpen={toggleModal}
@@ -82,19 +92,19 @@ const Dashboard: React.FC = () => {
         editingEmployee={editingEmployee}
         handleUpdateEmployee={handleUpdateEmployee}
       />
-
-      <Container>
-        {Employee &&
-          Employee.map(Employee => (
+      <Header openModal={toggleModal} />
+      <Content>
+        {users &&
+          users.map(employee => (
             <EmployeeItem
-              key={Employee.id}
-              employee={Employee}
+              key={employee.id}
+              employee={employee}
               handleDelete={handleDeleteEmployee}
               handleEditEmployee={handleEditEmployee}
             />
           ))}
-      </Container>
-    </>
+      </Content>
+    </Container>
   );
 };
 

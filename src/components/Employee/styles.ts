@@ -1,29 +1,38 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-around;
   background: #f0f0f5;
   border-radius: 8px;
-`;
-
-export const IconContainer = styled.div`
-  flex: 1;
+  width: 280px;
 `;
 
 export const Body = styled.section`
   padding: 30px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+`;
 
-  h2 {
-    color: #3d3d4d;
-  }
+export const TextName = styled.h2`
+  color: #3d3d4d;
+  font-weight: bold;
+`;
 
-  p {
-    color: #3d3d4d;
-    margin-top: 16px;
-  }
+export const TextInfo = styled.p`
+  color: #3d3d4d;
+  margin-top: 16px;
+`;
+
+export const TextDescription = styled(TextInfo)`
+  font-weight: bold;
 `;
 
 export const Header = styled.div`
-  background: #ffb84d;
+  background: #a9a9a9;
   border-radius: 8px 8px 0px 0px;
   height: 192px;
   overflow: hidden;
@@ -42,15 +51,18 @@ export const Button = styled.button`
 
 export const Footer = styled.section`
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
   padding: 20px 30px;
   background: #e4e4eb;
+
   border-radius: 0px 0px 8px 8px;
 `;
 
 export const Image = styled.img`
   pointer-events: none;
   user-select: none;
+  width: 200px;
+  height: 200px;
 `;

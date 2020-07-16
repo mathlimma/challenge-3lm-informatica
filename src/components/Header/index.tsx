@@ -1,8 +1,6 @@
 import React from 'react';
-
 import { FiPlusSquare } from 'react-icons/fi';
 import { Container, Content, Button, Icon, Text, Image } from './styles';
-
 import Logo from '../../assets/3lmlogo.png';
 
 interface IHeaderProps {

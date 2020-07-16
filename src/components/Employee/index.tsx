@@ -9,7 +9,9 @@ import {
   Image,
   Footer,
   Button,
-  IconContainer,
+  TextName,
+  TextDescription,
+  TextInfo,
 } from './styles';
 
 interface IEmployee {
@@ -47,19 +49,19 @@ const Employee: React.FC<IProps> = ({
         <Image src={employee.image} alt={Employee.name} />
       </Header>
       <Body>
-        <h2>{employee.name}</h2>
-        <p>{employee.secondName}</p>
+        <TextName>{`${employee.name} ${employee.secondName}`}</TextName>
+        <TextDescription>{employee.role.description}</TextDescription>
+        <TextInfo>Salário: {employee.salary}</TextInfo>
+        <TextInfo>Data de Nascimento: {employee.birth}</TextInfo>
       </Body>
       <Footer>
-        <IconContainer>
-          <Button type="button" onClick={() => setEditingEmployee()}>
-            <FiEdit3 size={20} />
-          </Button>
+        <Button type="button" onClick={() => setEditingEmployee()}>
+          <FiEdit3 size={20} />
+        </Button>
 
-          <Button type="button" onClick={() => handleDelete(employee.id)}>
-            <FiTrash size={20} />
-          </Button>
-        </IconContainer>
+        <Button type="button" onClick={() => handleDelete(employee.id)}>
+          <FiTrash size={20} />
+        </Button>
       </Footer>
     </Container>
   );
