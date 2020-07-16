@@ -5,23 +5,23 @@ import Header from '../../components/Header';
 import api from '../../services/api';
 
 import Food from '../../components/Food';
-import ModalAddFood from '../../components/ModalAddFood';
+import ModalAddEmployee from '../../components/ModalAddEmployee';
 import ModalEditFood from '../../components/ModalEditFood';
 
 import { FoodsContainer } from './styles';
 
-interface IFoodPlate {
+interface IEmployee {
   id: number;
   name: string;
-  image: string;
-  price: string;
-  description: string;
-  available: boolean;
+  secondName: string;
+  role: string;
+  birth: string;
+  salary: boolean;
 }
 
 const Dashboard: React.FC = () => {
-  const [foods, setFoods] = useState<IFoodPlate[]>([]);
-  const [editingFood, setEditingFood] = useState<IFoodPlate>({} as IFoodPlate);
+  const [foods, setFoods] = useState<IEmployee[]>([]);
+  const [editingFood, setEditingFood] = useState<IEmployee>({} as IEmployee);
   const [modalOpen, setModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
 
@@ -33,9 +33,7 @@ const Dashboard: React.FC = () => {
     loadFoods();
   }, []);
 
-  async function handleAddFood(
-    food: Omit<IFoodPlate, 'id' | 'available'>,
-  ): Promise<void> {
+  async function handleAddEmployee(employee: IEmployee): Promise<void> {
     try {
       // TODO ADD A NEW FOOD PLATE TO THE API
     } catch (err) {
@@ -43,9 +41,7 @@ const Dashboard: React.FC = () => {
     }
   }
 
-  async function handleUpdateFood(
-    food: Omit<IFoodPlate, 'id' | 'available'>,
-  ): Promise<void> {
+  async function handleUpdateFood(employee: IEmployee): Promise<void> {
     // TODO UPDATE A FOOD PLATE ON THE API
   }
 
@@ -61,26 +57,26 @@ const Dashboard: React.FC = () => {
     setEditModalOpen(!editModalOpen);
   }
 
-  function handleEditFood(food: IFoodPlate): void {
+  function handleEditFood(employee: IEmployee): void {
     // TODO SET THE CURRENT EDITING FOOD ID IN THE STATE
   }
 
   return (
     <>
       <Header openModal={toggleModal} />
-      <ModalAddFood
+      <ModalAddEmployee
         isOpen={modalOpen}
         setIsOpen={toggleModal}
-        handleAddFood={handleAddFood}
+        handleAddEmployee={handleAddEmployee}
       />
-      <ModalEditFood
+      {/* <ModalEditFood
         isOpen={editModalOpen}
         setIsOpen={toggleEditModal}
         editingFood={editingFood}
         handleUpdateFood={handleUpdateFood}
-      />
+      /> */}
 
-      <FoodsContainer data-testid="foods-list">
+      {/* <FoodsContainer data-testid="foods-list">
         {foods &&
           foods.map(food => (
             <Food
@@ -90,7 +86,7 @@ const Dashboard: React.FC = () => {
               handleEditFood={handleEditFood}
             />
           ))}
-      </FoodsContainer>
+      </FoodsContainer> */}
     </>
   );
 };

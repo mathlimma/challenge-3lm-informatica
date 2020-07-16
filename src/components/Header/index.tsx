@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { FiPlusSquare } from 'react-icons/fi';
-import { Container } from './styles';
+import { Container, Content, Button, Icon, Text, Image } from './styles';
 
-import Logo from '../../assets/logo.svg';
+import Logo from '../../assets/3lmlogo.png';
 
 interface IHeaderProps {
   openModal: () => void;
@@ -11,24 +11,20 @@ interface IHeaderProps {
 
 const Header: React.FC<IHeaderProps> = ({ openModal }) => (
   <Container>
-    <header>
-      <img src={Logo} alt="GoRestaurant" />
-      <nav>
-        <div>
-          <button
-            type="button"
-            onClick={() => {
-              /* TODO OPEN MODAL */
-            }}
-          >
-            <div className="text">Novo Prato</div>
-            <div className="icon">
-              <FiPlusSquare size={24} />
-            </div>
-          </button>
-        </div>
-      </nav>
-    </header>
+    <Content>
+      <Image src={Logo} />
+      <Button
+        type="button"
+        onClick={() => {
+          openModal();
+        }}
+      >
+        <Text>Novo Funcionário</Text>
+        <Icon className="icon">
+          <FiPlusSquare size={24} />
+        </Icon>
+      </Button>
+    </Content>
   </Container>
 );
 

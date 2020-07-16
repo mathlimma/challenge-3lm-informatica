@@ -1,18 +1,17 @@
 import styled from 'styled-components';
+import { Form as Unform } from '@unform/web';
 
-export const Container = styled.div`
-  background: #a9a9a9;
-  padding: 30px 0;
-  height: 120px;
+export const Form = styled(Unform)`
+  padding: 18px 10px;
+  display: flex;
+  flex-direction: column;
 `;
 
-export const Content = styled.div`
-  width: 1280px;
-  margin: 0 auto;
-  padding: 0 0 160px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+export const Title = styled.h1`
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 36px;
+  margin-bottom: 40px;
 `;
 
 export const Button = styled.button`
@@ -21,6 +20,8 @@ export const Button = styled.button`
   border: 0;
   background: #39b100;
   color: #fff;
+  margin-top: 48px;
+  align-self: flex-end;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -36,9 +37,4 @@ export const Icon = styled.div`
 
 export const Text = styled.text`
   padding: 16px 24px;
-`;
-
-export const Image = styled.img`
-  height: 50px;
-  width: 80px;
 `;
