@@ -34,26 +34,22 @@
       "salary": "R$ 1000,00"
     },
     {
-      "id": 4,
       "image": "https://thumbs.dreamstime.com/z/desenhos-animados-profissionais-do-homem-14788435.jpg",
       "name": "Marcos",
-      "secondName": "Silva",
-      "role": {
-        "description": "Dev Java"
-      },
+      "secondName": "Andrade",
+      "role": "[object Object]",
       "birth": "12/05/1990",
-      "salary": "R$ 4500,00"
+      "salary": "R$ 4500,00",
+      "id": 4
     },
     {
-      "id": 5,
       "image": "https://png.pngtree.com/png-clipart/20190611/original/pngtree-cartoon-camera-man-painted-hat-png-image_2554288.jpg",
       "name": "Luis",
-      "secondName": "Arantes",
-      "role": {
-        "description": "Dev ReactJs"
-      },
+      "secondName": "Arante",
+      "role": "[object Object]",
       "birth": "01/12/1994",
-      "salary": "R$ 3000,00"
+      "salary": "R$ 3000,00",
+      "id": 5
     },
     {
       "id": 6,
@@ -75,27 +71,7 @@
       },
       "birth": "24/12/1998",
       "salary": "R$ 2100,00",
-      "id": 7
-    },
-    {
-      "image": "https://image.freepik.com/vetores-gratis/projeto-colorido-menino_1114-83.jpg",
-      "name": "Joao",
-      "secondName": "Souza",
-      "role": {
-        "description": "Devops"
-      },
-      "birth": "24/12/1998",
-      "salary": "R$ 2100,00",
       "id": 8
-    },
-    {
-      "image": "https://image.freepik.com/vetores-gratis/projeto-colorido-menino_1114-83.jpg",
-      "name": "fdsdfds",
-      "secondName": "dsfsdfsdf",
-      "role": "sdfdsfds",
-      "birth": "dfsdfsfd",
-      "salary": "sdfdsfdsfdf",
-      "id": 9
     }
   ]
 }

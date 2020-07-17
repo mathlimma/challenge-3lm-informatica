@@ -15,30 +15,31 @@ export function* getUsers() {
 export function* addUser({ employee }) {
   const { addUserSuccess, addUserFailure } = UsersActions;
   try {
-    yield call(api.post, '/employees', employee);
-    yield put(addUserSuccess());
+    const response = yield call(api.post, '/employees', employee);
+    yield put(addUserSuccess(response.data));
   } catch (error) {
     yield put(addUserFailure());
   }
 }
 
-export function* updateUser({ user, id }) {
-  const { addUserSuccess, addUserFailure } = UsersActions;
+export function* updateUser({ employee, id }) {
+  const { updateUserSuccess, updateUserFailure } = UsersActions;
   try {
-    yield call(api.put, `/employees/${id}`, user);
-    yield put(addUserSuccess());
+    const response = yield call(api.put, `/employees/${id}`, employee);
+    console.log(response.data);
+    yield put(updateUserSuccess(response.data));
   } catch (error) {
-    yield put(addUserFailure());
+    yield put(updateUserFailure());
   }
 }
 
-export function* deleteUser({ user, id }) {
-  const { addUserSuccess, addUserFailure } = UsersActions;
+export function* deleteUser({ id }) {
+  const { deleteUserSuccess, deleteUserFailure } = UsersActions;
   try {
-    yield call(api.delete, `/employees/${id}`, user);
-    yield put(addUserSuccess());
+    yield call(api.delete, `/employees/${id}`);
+    yield put(deleteUserSuccess(id));
   } catch (error) {
-    yield put(addUserFailure());
+    yield put(deleteUserFailure());
   }
 }
 

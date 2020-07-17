@@ -32,7 +32,7 @@ interface IEditEmployee {
 interface IModalProps {
   isOpen: boolean;
   setIsOpen: () => void;
-  handleUpdateEmployee: (employee: IEmployee) => void;
+  handleUpdateEmployee: (employee: IEditEmployee, id: number) => void;
   editingEmployee: IEmployee;
 }
 
@@ -46,7 +46,7 @@ const ModalEditEmployee: React.FC<IModalProps> = ({
 
   const handleSubmit = useCallback(
     async (data: IEditEmployee) => {
-      // EDIT A FOOD PLATE AND CLOSE THE MODAL
+      handleUpdateEmployee(data, editingEmployee.id);
     },
     [setIsOpen],
   );
@@ -55,6 +55,7 @@ const ModalEditEmployee: React.FC<IModalProps> = ({
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <Form ref={formRef} onSubmit={handleSubmit} initialData={editingEmployee}>
         <Title>Editar Funcionário</Title>
+        <Input name="image" placeholder="url da foto" />
         <Input name="name" placeholder="Nome" />
 
         <Input name="secondName" placeholder="Sobrenome" />

@@ -13,17 +13,17 @@ export const { Types, Creators } = createActions({
 
   //add
   addUserRequest: ['employee'],
-  addUserSuccess: ['user'],
+  addUserSuccess: ['employee'],
   addUserFailure: [],
 
   //update
-  updateUserRequest: ['user'],
-  updateUserSuccess: ['user'],
+  updateUserRequest: ['employee', 'id'],
+  updateUserSuccess: ['employee'],
   updateUserFailure: [],
 
   //delete
-  deleteUserRequest: ['user'],
-  deleteUserSuccess: ['user'],
+  deleteUserRequest: ['id'],
+  deleteUserSuccess: ['id'],
   deleteUserFailure: [],
 });
 
@@ -61,7 +61,7 @@ const addUserRequest = (state = INITIAL_STATE) =>
 const addUserSuccess = (state = INITIAL_STATE, action) =>
   produce(state, draft => {
     draft.loading = false;
-    draft.users = draft.users.concat(action.user);
+    draft.users = draft.users.concat(action.employee);
   });
 
 const addUserFailure = (state = INITIAL_STATE) =>
@@ -78,7 +78,8 @@ const updateUserRequest = (state = INITIAL_STATE) =>
 const updateUserSuccess = (state = INITIAL_STATE, action) =>
   produce(state, draft => {
     draft.loading = false;
-    //draft.users =
+    draft.users = draft.users.filter(user => user.id != action.employee.id);
+    draft.users = draft.users.concat(action.employee);
   });
 
 const updateUserFailure = (state = INITIAL_STATE) =>
@@ -95,7 +96,7 @@ const deleteUserRequest = (state = INITIAL_STATE) =>
 const deleteUserSuccess = (state = INITIAL_STATE, action) =>
   produce(state, draft => {
     draft.loading = false;
-    //draft.users =
+    draft.users = draft.users.filter(user => user.id != action.id);
   });
 
 const deleteUserFailure = (state = INITIAL_STATE) =>

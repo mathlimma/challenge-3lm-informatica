@@ -18,6 +18,15 @@ interface IEmployee {
   salary: boolean;
 }
 
+interface IEditEmployee {
+  name: string;
+  image: string;
+  secondName: string;
+  role: string;
+  birth: string;
+  salary: boolean;
+}
+
 interface IRole {
   description: string;
 }
@@ -38,7 +47,12 @@ const Dashboard: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(true);
   const [editModalOpen, setEditModalOpen] = useState(false);
 
-  const { getUsersRequest, addUserRequest } = UserActions;
+  const {
+    getUsersRequest,
+    addUserRequest,
+    updateUserRequest,
+    deleteUserRequest,
+  } = UserActions;
   const { users } = useSelector((state: IRootState) => state.user);
   const dispatch = useDispatch();
 
@@ -54,12 +68,15 @@ const Dashboard: React.FC = () => {
     dispatch(addUserRequest(employee));
   }
 
-  async function handleUpdateEmployee(employee: IEmployee): Promise<void> {
-    // TODO UPDATE A FOOD PLATE ON THE API
+  async function handleUpdateEmployee(
+    employee: IEditEmployee,
+    id: number,
+  ): Promise<void> {
+    dispatch(updateUserRequest(employee, id));
   }
 
   async function handleDeleteEmployee(id: number): Promise<void> {
-    // TODO DELETE A FOOD PLATE FROM THE API
+    dispatch(deleteUserRequest(id));
   }
 
   function toggleModal(): void {
@@ -71,7 +88,8 @@ const Dashboard: React.FC = () => {
   }
 
   function handleEditEmployee(employee: IEmployee): void {
-    // TODO SET THE CURRENT EDITING FOOD ID IN THE STATE
+    setEditingEmployee(employee);
+    toggleEditModal();
   }
 
   return (

@@ -40,7 +40,7 @@ const Employee: React.FC<IProps> = ({
   handleEditEmployee,
 }: IProps) => {
   function setEditingEmployee(): void {
-    // TODO - SET THE ID OF THE CURRENT ITEM TO THE EDITING FOOD AND OPEN MODAL
+    handleEditEmployee(employee);
   }
 
   return (
