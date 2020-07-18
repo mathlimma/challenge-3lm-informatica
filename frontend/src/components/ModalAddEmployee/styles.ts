@@ -12,6 +12,7 @@ export const Title = styled.h1`
   font-size: 36px;
   line-height: 36px;
   margin-bottom: 40px;
+  color: #fff;
 `;
 
 export const Button = styled.button`
@@ -35,6 +36,6 @@ export const Icon = styled.div`
   margin: 0 auto;
 `;
 
-export const Text = styled.text`
+export const Text = styled.p`
   padding: 16px 24px;
 `;

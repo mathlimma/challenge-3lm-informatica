@@ -36,7 +36,7 @@ const ModalEditEmployee: React.FC<IModalProps> = ({
         <Input name="name" placeholder="Nome" />
 
         <Input name="secondName" placeholder="Sobrenome" />
-        <Input name="role" placeholder="Cargo" />
+        <Input name="role.description" placeholder="Cargo" />
 
         <Input name="birth" placeholder="Data de Nascimento" />
         <Input name="salary" placeholder="Salário" />

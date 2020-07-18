@@ -2,14 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background: #a9a9a9;
-  padding: 30px 0;
   height: 120px;
-`;
-
-export const Content = styled.div`
-  width: 1280px;
+  width: 100%;
+  padding: 30px 30px;
   margin: 0 auto;
-  padding: 0 0 160px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -24,6 +20,7 @@ export const Button = styled.button`
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-right: 50px;
 `;
 
 export const Icon = styled.div`
@@ -34,7 +31,7 @@ export const Icon = styled.div`
   margin: 0 auto;
 `;
 
-export const Text = styled.text`
+export const Text = styled.p`
   padding: 16px 24px;
 `;
 
