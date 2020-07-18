@@ -12,33 +12,30 @@ export function* getEmployees() {
   }
 }
 
-export function* addEmployee({ employee }) {
+export function* addEmployee({ employee }: any) {
   const { addEmployeeSuccess, addEmployeeFailure } = EmployeesActions;
   try {
     const response = yield call(api.post, '/employees', employee);
-    console.log(response);
     yield put(addEmployeeSuccess(response.data));
   } catch (error) {
     yield put(addEmployeeFailure());
   }
 }
 
-export function* updateEmployee({ employee, id }) {
+export function* updateEmployee({ employee, id }: any) {
   const { updateEmployeeSuccess, updateEmployeeFailure } = EmployeesActions;
   try {
     const response = yield call(api.put, `/employees/${id}`, employee);
-    console.log(response.data);
     yield put(updateEmployeeSuccess(response.data));
   } catch (error) {
     yield put(updateEmployeeFailure());
   }
 }
 
-export function* deleteEmployee({ id }) {
+export function* deleteEmployee({ id }: any) {
   const { deleteEmployeeSuccess, deleteEmployeeFailure } = EmployeesActions;
   try {
     yield call(api.delete, `/employees/${id}`);
-    console.log(id);
     yield put(deleteEmployeeSuccess(id));
   } catch (error) {
     yield put(deleteEmployeeFailure());

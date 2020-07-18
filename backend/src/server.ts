@@ -1,3 +1,9 @@
-import app from './app'
+import app from "./app";
+import logger from "./utils/logger";
 
-app.listen(3333)
+app.listen(3333);
+
+logger.log({
+  level: "info",
+  message: "server successfully initialized!!!",
+});

@@ -1,8 +1,9 @@
 import { createActions, createReducer } from 'reduxsauce';
 import produce from 'immer';
+import { IEmployeesObg } from '../../../interfaces';
 
 /**
- * Creating action types & creators
+ * Creating action types e creators
  */
 
 export const { Types, Creators } = createActions({
@@ -30,52 +31,61 @@ export const { Types, Creators } = createActions({
 /**
  * Creating the reducer handlers
  */
-const INITIAL_STATE = {
+const INITIAL_STATE: IEmployeesObg = {
   employees: [],
   loading: false,
 };
 
 // get employees
-const getEmployeesRequest = (state = INITIAL_STATE) =>
+const getEmployeesRequest = (state = INITIAL_STATE): IEmployeesObg =>
   produce(state, draft => {
     draft.loading = true;
   });
 
-const getEmployeesSuccess = (state = INITIAL_STATE, action) =>
+const getEmployeesSuccess = (
+  state = INITIAL_STATE,
+  action: any,
+): IEmployeesObg =>
   produce(state, draft => {
     draft.loading = false;
     draft.employees = action.employees;
   });
 
-const getEmployeesFailure = (state = INITIAL_STATE) =>
+const getEmployeesFailure = (state = INITIAL_STATE): IEmployeesObg =>
   produce(state, draft => {
     draft.loading = false;
   });
 
 // add employee
-const addEmployeeRequest = (state = INITIAL_STATE) =>
+const addEmployeeRequest = (state = INITIAL_STATE): IEmployeesObg =>
   produce(state, draft => {
     draft.loading = true;
   });
 
-const addEmployeeSuccess = (state = INITIAL_STATE, action) =>
+const addEmployeeSuccess = (
+  state = INITIAL_STATE,
+  action: any,
+): IEmployeesObg =>
   produce(state, draft => {
     draft.loading = false;
     draft.employees = draft.employees.concat(action.employee);
   });
 
-const addEmployeeFailure = (state = INITIAL_STATE) =>
+const addEmployeeFailure = (state = INITIAL_STATE): IEmployeesObg =>
   produce(state, draft => {
     draft.loading = false;
   });
 
 // update employee
-const updateEmployeeRequest = (state = INITIAL_STATE) =>
+const updateEmployeeRequest = (state = INITIAL_STATE): IEmployeesObg =>
   produce(state, draft => {
     draft.loading = true;
   });
 
-const updateEmployeeSuccess = (state = INITIAL_STATE, action) =>
+const updateEmployeeSuccess = (
+  state = INITIAL_STATE,
+  action: any,
+): IEmployeesObg =>
   produce(state, draft => {
     draft.loading = false;
     draft.employees = draft.employees.filter(
@@ -84,24 +94,27 @@ const updateEmployeeSuccess = (state = INITIAL_STATE, action) =>
     draft.employees = draft.employees.concat(action.employee);
   });
 
-const updateEmployeeFailure = (state = INITIAL_STATE) =>
+const updateEmployeeFailure = (state = INITIAL_STATE): IEmployeesObg =>
   produce(state, draft => {
     draft.loading = false;
   });
 
 // delete employee
-const deleteEmployeeRequest = (state = INITIAL_STATE) =>
+const deleteEmployeeRequest = (state = INITIAL_STATE): IEmployeesObg =>
   produce(state, draft => {
     draft.loading = true;
   });
 
-const deleteEmployeeSuccess = (state = INITIAL_STATE, action) =>
+const deleteEmployeeSuccess = (
+  state = INITIAL_STATE,
+  action: any,
+): IEmployeesObg =>
   produce(state, draft => {
     draft.loading = false;
     draft.employees = draft.employees.filter(emp => emp._id !== action.id);
   });
 
-const deleteEmployeeFailure = (state = INITIAL_STATE) =>
+const deleteEmployeeFailure = (state = INITIAL_STATE): IEmployeesObg =>
   produce(state, draft => {
     draft.loading = false;
   });

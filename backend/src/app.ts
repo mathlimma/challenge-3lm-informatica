@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+var morgan = require("morgan");
 
 import routes from "./routes";
 
@@ -16,6 +17,7 @@ class App {
   }
 
   private middlewares(): void {
+    this.express.use(morgan("dev"));
     this.express.use(express.json());
     this.express.use(cors());
   }

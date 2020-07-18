@@ -18,14 +18,20 @@ export interface IEditEmployee {
 }
 
 export interface IRole {
+  _id: string;
   description: string;
 }
 
 export interface IRootState {
-  employee: IUser;
+  employee: IEmployeesObg;
 }
 
-export interface IUser {
+export interface IEmployeesObg {
   employees: IEmployee[];
+  loading: boolean;
+}
+
+export interface IRoleObg {
+  roles: IRole[];
   loading: boolean;
 }
