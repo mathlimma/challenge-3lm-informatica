@@ -21,7 +21,7 @@ const Dashboard: React.FC = () => {
     updateEmployeeRequest,
     deleteEmployeeRequest,
   } = EmployeeActions;
-  const { users } = useSelector((state: IRootState) => state.user);
+  const { employees } = useSelector((state: IRootState) => state.employee);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -32,8 +32,8 @@ const Dashboard: React.FC = () => {
   }, []);
 
   async function handleAddEmployee(employee: IEmployee): Promise<void> {
-    console.log(employee);
     dispatch(addEmployeeRequest(employee));
+    toggleModal();
   }
 
   async function handleUpdateEmployee(
@@ -41,6 +41,7 @@ const Dashboard: React.FC = () => {
     id: number,
   ): Promise<void> {
     dispatch(updateEmployeeRequest(employee, id));
+    toggleEditModal();
   }
 
   async function handleDeleteEmployee(id: number): Promise<void> {
@@ -48,7 +49,6 @@ const Dashboard: React.FC = () => {
   }
 
   function toggleModal(): void {
-    console.log('aqui');
     setModalOpen(!modalOpen);
   }
 
@@ -76,8 +76,8 @@ const Dashboard: React.FC = () => {
         handleUpdateEmployee={handleUpdateEmployee}
       />
       <Content>
-        {users &&
-          users.map(employee => (
+        {employees &&
+          employees.map(employee => (
             <EmployeeItem
               key={employee._id}
               employee={employee}

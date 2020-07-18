@@ -22,10 +22,10 @@ export interface IRole {
 }
 
 export interface IRootState {
-  user: IUser;
+  employee: IUser;
 }
 
 export interface IUser {
-  users: IEmployee[];
+  employees: IEmployee[];
   loading: boolean;
 }
