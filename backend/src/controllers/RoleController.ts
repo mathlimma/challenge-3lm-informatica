@@ -3,35 +3,59 @@ import { Role } from "../schemas/Role";
 
 class RoleController {
   public async index(req: Request, res: Response): Promise<Response> {
-    const roles = await Role.find();
+    try {
+      const roles = await Role.find();
 
-    return res.json(roles);
+      return res.json(roles);
+    } catch (err) {
+      return res.status(500).json({ err });
+    }
   }
 
   public async show(req: Request, res: Response): Promise<Response> {
-    const role = await Role.findById(req.params.id);
+    try {
+      const role = await Role.findById(req.params.id);
 
-    return res.json(role);
+      return res.json(role);
+    } catch (err) {
+      return res.status(500).json({ err });
+    }
   }
 
   public async store(req: Request, res: Response): Promise<Response> {
-    const role = await Role.create(req.body);
+    try {
+      const role = await Role.create(req.body);
 
-    return res.json(role);
+      return res.json(role);
+    } catch (err) {
+      return res.status(500).json({ err });
+    }
   }
 
   public async update(req: Request, res: Response): Promise<Response> {
-    const role = await Role.findOneAndUpdate({ _id: req.params.id }, req.body, {
-      new: true,
-    });
+    try {
+      const role = await Role.findOneAndUpdate(
+        { _id: req.params.id },
+        req.body,
+        {
+          new: true,
+        }
+      );
 
-    return res.json(role);
+      return res.json(role);
+    } catch (err) {
+      return res.status(500).json({ err });
+    }
   }
 
   public async delete(req: Request, res: Response): Promise<Response> {
-    await Role.findByIdAndDelete(req.params.id);
+    try {
+      await Role.findByIdAndDelete(req.params.id);
 
-    return res.json({ success: true });
+      return res.json({ success: true });
+    } catch (err) {
+      return res.status(500).json({ err });
+    }
   }
 }
 
