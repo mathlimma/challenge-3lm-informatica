@@ -1,24 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../components/Header';
 import EmployeeItem from '../../components/Employee';
+import RoleItem from '../../components/Role';
 import ModalAddEmployee from '../../components/ModalAddEmployee';
 import ModalEditEmployee from '../../components/ModalEditEmployee';
 import { Creators as EmployeeActions } from '../../store/ducks/employee';
-import { IEmployee, IEditEmployee, IRootState } from '../../interfaces';
+import { Creators as RoleActions } from '../../store/ducks/role';
+import { FiPlusSquare } from 'react-icons/fi';
+import { FormHandles } from '@unform/core';
+import Input from '../../components/Input';
+
+import {
+  IEmployee,
+  IEditEmployee,
+  IRootState,
+  IRole,
+  IEditRole,
+} from '../../interfaces';
 import {
   Container,
   EmployeeContainer,
   RoleContainer,
+  RoleGrid,
   Body,
   Divider,
+  //form
+  Form,
+  Button,
+  ButtonWapper,
+  Icon,
+  Text,
+  InputWrapper,
 } from './styles';
-import Employee from '../../components/Employee';
 
 const Dashboard: React.FC = () => {
   const [editingEmployee, setEditingEmployee] = useState<IEmployee>(
     {} as IEmployee,
   );
+  const [editingRole, setEditingRole] = useState<IRole>({} as IRole);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
 
@@ -28,16 +48,45 @@ const Dashboard: React.FC = () => {
     updateEmployeeRequest,
     deleteEmployeeRequest,
   } = EmployeeActions;
+  const {
+    getRolesRequest,
+    addRoleRequest,
+    updateRoleRequest,
+    deleteRoleRequest,
+  } = RoleActions;
   const { employees } = useSelector((state: IRootState) => state.employee);
+  const { roles } = useSelector((state: IRootState) => state.role);
+  const formRef = useRef<FormHandles>(null);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    async function loadEmployees(): Promise<void> {
+    async function loadEmployeesAndRoles(): Promise<void> {
       dispatch(getEmployeesRequest());
+      dispatch(getRolesRequest());
     }
-    loadEmployees();
+    loadEmployeesAndRoles();
   }, []);
 
+  // role handles
+  async function handleAddRole(role: IEditRole): Promise<void> {
+    console.log(role);
+    dispatch(addRoleRequest(role));
+  }
+
+  async function handleUpdateRole(role: IEditRole, id: number): Promise<void> {
+    dispatch(updateRoleRequest(role, id));
+  }
+
+  async function handleDeleteRole(id: number): Promise<void> {
+    dispatch(deleteRoleRequest(id));
+  }
+
+  function handleEditRole(role: IRole): void {
+    setEditingRole(role);
+  }
+
+  // employee handles
   async function handleAddEmployee(employee: IEmployee): Promise<void> {
     dispatch(addEmployeeRequest(employee));
     toggleModal();
@@ -55,17 +104,18 @@ const Dashboard: React.FC = () => {
     dispatch(deleteEmployeeRequest(id));
   }
 
+  function handleEditEmployee(employee: IEmployee): void {
+    setEditingEmployee(employee);
+    toggleEditModal();
+  }
+
+  // modals
   function toggleModal(): void {
     setModalOpen(!modalOpen);
   }
 
   function toggleEditModal(): void {
     setEditModalOpen(!editModalOpen);
-  }
-
-  function handleEditEmployee(employee: IEmployee): void {
-    setEditingEmployee(employee);
-    toggleEditModal();
   }
 
   return (
@@ -75,6 +125,7 @@ const Dashboard: React.FC = () => {
         isOpen={modalOpen}
         setIsOpen={toggleModal}
         handleAddEmployee={handleAddEmployee}
+        roles={roles}
       />
       <ModalEditEmployee
         isOpen={editModalOpen}
@@ -82,6 +133,7 @@ const Dashboard: React.FC = () => {
         editingEmployee={editingEmployee}
         handleUpdateEmployee={handleUpdateEmployee}
       />
+
       <Body>
         <EmployeeContainer>
           {employees &&
@@ -95,7 +147,33 @@ const Dashboard: React.FC = () => {
             ))}
         </EmployeeContainer>
         <Divider />
-        <RoleContainer></RoleContainer>
+        <RoleContainer>
+          <Form ref={formRef} onSubmit={handleAddRole}>
+            <InputWrapper>
+              <Input name="description" placeholder="Novo Cargo" />
+            </InputWrapper>
+
+            <ButtonWapper>
+              <Button type="submit">
+                <Text>Add Cargo</Text>
+                <Icon>
+                  <FiPlusSquare size={20} />
+                </Icon>
+              </Button>
+            </ButtonWapper>
+          </Form>
+          <RoleGrid>
+            {roles &&
+              roles.map(role => (
+                <RoleItem
+                  key={role._id}
+                  role={role}
+                  handleDelete={handleDeleteRole}
+                  handleEditRole={handleEditRole}
+                />
+              ))}
+          </RoleGrid>
+        </RoleContainer>
       </Body>
     </Container>
   );

@@ -18,12 +18,17 @@ export interface IEditEmployee {
 }
 
 export interface IRole {
-  _id: string;
+  _id: number;
+  description: string;
+}
+
+export interface IEditRole {
   description: string;
 }
 
 export interface IRootState {
   employee: IEmployeesObg;
+  role: IRoleObg;
 }
 
 export interface IEmployeesObg {

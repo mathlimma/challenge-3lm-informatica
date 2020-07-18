@@ -15,6 +15,7 @@ export function* getRoles() {
 export function* addRole({ role }: any) {
   const { addRoleSuccess, addRoleFailure } = RolesActions;
   try {
+    console.log(role);
     const response = yield call(api.post, '/roles', role);
     yield put(addRoleSuccess(response.data));
   } catch (error) {

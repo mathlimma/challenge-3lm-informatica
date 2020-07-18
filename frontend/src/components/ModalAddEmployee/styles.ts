@@ -39,3 +39,15 @@ export const Icon = styled.div`
 export const Text = styled.p`
   padding: 16px 24px;
 `;
+
+export const Select = styled.select`
+  margin: 20px 0px 20px 0px;
+  height: 60px;
+  border-radius: 8px;
+  background: #fff;
+  color: #b7b7cc;
+  font-size: 16px;
+  padding: 0px 20px 0px 20px;
+`;
+
+export const Option = styled.option``;

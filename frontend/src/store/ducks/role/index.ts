@@ -13,8 +13,8 @@ export const { Types, Creators } = createActions({
   getRolesFailure: [],
 
   //add
-  addRoleRequest: ['roles'],
-  addRoleSuccess: ['roles'],
+  addRoleRequest: ['role'],
+  addRoleSuccess: ['role'],
   addRoleFailure: [],
 
   //update
@@ -62,7 +62,7 @@ const addRoleRequest = (state = INITIAL_STATE): IRoleObg =>
 const addRoleSuccess = (state = INITIAL_STATE, action: any): IRoleObg =>
   produce(state, draft => {
     draft.loading = false;
-    draft.roles = draft.roles.concat(action.roles);
+    draft.roles = draft.roles.concat(action.role);
   });
 
 const addRoleFailure = (state = INITIAL_STATE): IRoleObg =>

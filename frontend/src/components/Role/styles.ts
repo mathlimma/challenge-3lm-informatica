@@ -3,42 +3,24 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex: 1;
+  height: 200px;
   flex-direction: column;
   justify-content: space-around;
   background: #f0f0f5;
   border-radius: 8px;
-  width: 280px;
-  max-height: 500px;
+  width: 150px;
 `;
 
 export const Body = styled.section`
-  padding: 30px;
+  padding: 20px;
   display: flex;
   flex: 1;
   flex-direction: column;
 `;
 
-export const TextName = styled.h2`
-  color: #3d3d4d;
-  font-weight: bold;
-`;
-
 export const TextInfo = styled.p`
   color: #3d3d4d;
-  margin-top: 16px;
-`;
-
-export const TextDescription = styled(TextInfo)`
-  font-weight: bold;
-`;
-
-export const Header = styled.div`
-  background: #a9a9a9;
-  border-radius: 8px 8px 0px 0px;
-  height: 192px;
-  overflow: hidden;
-  transition: 0.3s opacity;
-  text-align: center;
+  margin-top: 10px;
 `;
 
 export const Button = styled.button`
@@ -55,15 +37,7 @@ export const Footer = styled.section`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px;
+  padding: 10px 15px;
   background: #e4e4eb;
-
   border-radius: 0px 0px 8px 8px;
-`;
-
-export const Image = styled.img`
-  pointer-events: none;
-  user-select: none;
-  width: 200px;
-  height: 200px;
 `;
