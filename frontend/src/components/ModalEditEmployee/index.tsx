@@ -5,30 +5,7 @@ import { FormHandles } from '@unform/core';
 import { Form, Button, Text, Icon, Title } from './styles';
 import Modal from '../Modal';
 import Input from '../Input';
-
-interface IEmployee {
-  id: number;
-  image: string;
-  name: string;
-  secondName: string;
-  role: IRole;
-  birth: string;
-  salary: boolean;
-}
-
-interface IRole {
-  description: string;
-}
-
-interface IEditEmployee {
-  name: string;
-  image: string;
-  secondName: string;
-  role: string;
-  birth: string;
-  salary: boolean;
-}
-
+import { IEmployee, IEditEmployee } from '../../interfaces';
 interface IModalProps {
   isOpen: boolean;
   setIsOpen: () => void;
@@ -46,7 +23,7 @@ const ModalEditEmployee: React.FC<IModalProps> = ({
 
   const handleSubmit = useCallback(
     async (data: IEditEmployee) => {
-      handleUpdateEmployee(data, editingEmployee.id);
+      handleUpdateEmployee(data, editingEmployee._id);
     },
     [setIsOpen],
   );

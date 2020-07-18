@@ -14,19 +14,7 @@ import {
   TextInfo,
 } from './styles';
 
-interface IEmployee {
-  id: number;
-  image: string;
-  name: string;
-  secondName: string;
-  role: IRole;
-  birth: string;
-  salary: boolean;
-}
-
-interface IRole {
-  description: string;
-}
+import { IEmployee } from '../../interfaces';
 
 interface IProps {
   employee: IEmployee;
@@ -43,10 +31,14 @@ const Employee: React.FC<IProps> = ({
     handleEditEmployee(employee);
   }
 
+  const image = employee.image
+    ? employee.image
+    : 'https://img2.gratispng.com/20180603/jx/kisspng-user-interface-design-computer-icons-default-stephen-salazar-photography-5b1462e1b19d70.1261504615280626897275.jpg';
+
   return (
     <Container>
       <Header>
-        <Image src={employee.image} alt={Employee.name} />
+        <Image src={image} alt={Employee.name} />
       </Header>
       <Body>
         <TextName>{`${employee.name} ${employee.secondName}`}</TextName>
@@ -59,7 +51,7 @@ const Employee: React.FC<IProps> = ({
           <FiEdit3 size={20} />
         </Button>
 
-        <Button type="button" onClick={() => handleDelete(employee.id)}>
+        <Button type="button" onClick={() => handleDelete(employee._id)}>
           <FiTrash size={20} />
         </Button>
       </Footer>

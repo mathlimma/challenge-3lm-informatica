@@ -78,7 +78,7 @@ const updateUserRequest = (state = INITIAL_STATE) =>
 const updateUserSuccess = (state = INITIAL_STATE, action) =>
   produce(state, draft => {
     draft.loading = false;
-    draft.users = draft.users.filter(user => user.id != action.employee.id);
+    draft.users = draft.users.filter(user => user._id != action.employee._id);
     draft.users = draft.users.concat(action.employee);
   });
 
@@ -96,7 +96,7 @@ const deleteUserRequest = (state = INITIAL_STATE) =>
 const deleteUserSuccess = (state = INITIAL_STATE, action) =>
   produce(state, draft => {
     draft.loading = false;
-    draft.users = draft.users.filter(user => user.id != action.id);
+    draft.users = draft.users.filter(user => user._id != action.id);
   });
 
 const deleteUserFailure = (state = INITIAL_STATE) =>

@@ -6,19 +6,7 @@ import { Form, Button, Icon, Text, Title } from './styles';
 import Modal from '../Modal';
 import Input from '../Input';
 
-interface IEmployee {
-  id: number;
-  image: string;
-  name: string;
-  secondName: string;
-  role: IRole;
-  birth: string;
-  salary: boolean;
-}
-
-interface IRole {
-  description: string;
-}
+import { IEmployee } from '../../interfaces';
 
 interface IModalProps {
   isOpen: boolean;

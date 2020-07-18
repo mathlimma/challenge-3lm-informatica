@@ -5,40 +5,8 @@ import EmployeeItem from '../../components/Employee';
 import ModalAddEmployee from '../../components/ModalAddEmployee';
 import ModalEditEmployee from '../../components/ModalEditEmployee';
 import { Creators as UserActions } from '../../store/ducks/user';
-
+import { IEmployee, IEditEmployee, IRootState } from '../../interfaces';
 import { Container, Content } from './styles';
-
-interface IEmployee {
-  id: number;
-  image: string;
-  name: string;
-  secondName: string;
-  role: IRole;
-  birth: string;
-  salary: boolean;
-}
-
-interface IEditEmployee {
-  name: string;
-  image: string;
-  secondName: string;
-  role: string;
-  birth: string;
-  salary: boolean;
-}
-
-interface IRole {
-  description: string;
-}
-
-interface IRootState {
-  user: IUser;
-}
-
-interface IUser {
-  users: IEmployee[];
-  loading: boolean;
-}
 
 const Dashboard: React.FC = () => {
   const [editingEmployee, setEditingEmployee] = useState<IEmployee>(
@@ -110,7 +78,7 @@ const Dashboard: React.FC = () => {
         {users &&
           users.map(employee => (
             <EmployeeItem
-              key={employee.id}
+              key={employee._id}
               employee={employee}
               handleDelete={handleDeleteEmployee}
               handleEditEmployee={handleEditEmployee}

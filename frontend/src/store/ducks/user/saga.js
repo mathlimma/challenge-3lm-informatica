@@ -16,6 +16,7 @@ export function* addUser({ employee }) {
   const { addUserSuccess, addUserFailure } = UsersActions;
   try {
     const response = yield call(api.post, '/employees', employee);
+    console.log(response);
     yield put(addUserSuccess(response.data));
   } catch (error) {
     yield put(addUserFailure());
@@ -37,6 +38,7 @@ export function* deleteUser({ id }) {
   const { deleteUserSuccess, deleteUserFailure } = UsersActions;
   try {
     yield call(api.delete, `/employees/${id}`);
+    console.log(id);
     yield put(deleteUserSuccess(id));
   } catch (error) {
     yield put(deleteUserFailure());
