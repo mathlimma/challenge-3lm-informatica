@@ -11,9 +11,9 @@ const Header: React.FC<IHeaderProps> = ({ openModal }) => (
   <Container>
     <Content>
       <Image src={Logo} />
-      <Button type="button" onClick={openModal}>
+      <Button type="button" onClick={() => openModal()}>
         <Text>Novo Funcionário</Text>
-        <Icon className="icon">
+        <Icon>
           <FiPlusSquare size={24} />
         </Icon>
       </Button>
