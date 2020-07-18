@@ -43,7 +43,7 @@ const Employee: React.FC<IProps> = ({
       <Body>
         <TextName>{`${employee.name} ${employee.secondName}`}</TextName>
         <TextDescription>{employee.role.description}</TextDescription>
-        <TextInfo>Salário: {employee.salary}</TextInfo>
+        <TextInfo>Salário R$ : {employee.salary}</TextInfo>
         <TextInfo>Data de Nascimento: {employee.birth}</TextInfo>
       </Body>
       <Footer>

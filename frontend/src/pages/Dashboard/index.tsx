@@ -6,7 +6,14 @@ import ModalAddEmployee from '../../components/ModalAddEmployee';
 import ModalEditEmployee from '../../components/ModalEditEmployee';
 import { Creators as EmployeeActions } from '../../store/ducks/employee';
 import { IEmployee, IEditEmployee, IRootState } from '../../interfaces';
-import { Container, Content } from './styles';
+import {
+  Container,
+  EmployeeContainer,
+  RoleContainer,
+  Body,
+  Divider,
+} from './styles';
+import Employee from '../../components/Employee';
 
 const Dashboard: React.FC = () => {
   const [editingEmployee, setEditingEmployee] = useState<IEmployee>(
@@ -75,17 +82,21 @@ const Dashboard: React.FC = () => {
         editingEmployee={editingEmployee}
         handleUpdateEmployee={handleUpdateEmployee}
       />
-      <Content>
-        {employees &&
-          employees.map(employee => (
-            <EmployeeItem
-              key={employee._id}
-              employee={employee}
-              handleDelete={handleDeleteEmployee}
-              handleEditEmployee={handleEditEmployee}
-            />
-          ))}
-      </Content>
+      <Body>
+        <EmployeeContainer>
+          {employees &&
+            employees.map(employee => (
+              <EmployeeItem
+                key={employee._id}
+                employee={employee}
+                handleDelete={handleDeleteEmployee}
+                handleEditEmployee={handleEditEmployee}
+              />
+            ))}
+        </EmployeeContainer>
+        <Divider />
+        <RoleContainer></RoleContainer>
+      </Body>
     </Container>
   );
 };

@@ -31,13 +31,13 @@ const ModalAddEmployee: React.FC<IModalProps> = ({
         <Title>Novo Funcionario</Title>
 
         <Input name="image" placeholder="url da foto" />
-        <Input name="name" placeholder="Nome" />
+        <Input name="name" placeholder="Nome*" />
 
-        <Input name="secondName" placeholder="Sobrenome" />
-        <Input name="role" placeholder="Cargo" />
+        <Input name="secondName" placeholder="Sobrenome*" />
+        <Input name="role" placeholder="Cargo*" />
 
-        <Input name="birth" placeholder="Data de Nascimento" />
-        <Input name="salary" placeholder="Salário" />
+        <Input name="birth" placeholder="Data de Nascimento*" />
+        <Input name="salary" placeholder="Salário*" />
 
         <Button type="submit">
           <Text>Adicionar Funcionário</Text>
