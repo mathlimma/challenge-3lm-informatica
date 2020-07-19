@@ -25,20 +25,19 @@ const ModalAddEmployee: React.FC<IModalProps> = ({
   const selectedRef = useRef(null);
 
   const [selectedRole, setSelectedRole] = useState();
-  const handleSubmit = useCallback(async data => {
-    const role2 = formRef;
+
+  function handleSubmit(data: any, { reset }: any) {
     data = {
       ...data,
-      role: 'selectedRef.current.value',
+      role: selectedRole,
     };
-    console.log(formRef);
-    console.log(data);
+    handleAddEmployee(data);
 
-    //handleAddEmployee(data);
-  }, []);
+    reset();
+  }
+
   function handleChange(e: any) {
     setSelectedRole(e.target.value);
-    console.log(selectedRole);
   }
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>

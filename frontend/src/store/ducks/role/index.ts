@@ -18,8 +18,8 @@ export const { Types, Creators } = createActions({
   addRoleFailure: [],
 
   //update
-  updateRoleRequest: ['roles', 'id'],
-  updateRoleSuccess: ['roles'],
+  updateRoleRequest: ['role', 'id'],
+  updateRoleSuccess: ['role'],
   updateRoleFailure: [],
 
   //delete
@@ -80,9 +80,9 @@ const updateRoleSuccess = (state = INITIAL_STATE, action: any): IRoleObg =>
   produce(state, draft => {
     draft.loading = false;
     draft.roles = draft.roles.filter(
-      (role: any) => role._id !== action.roles._id,
+      (role: any) => role._id !== action.role._id,
     );
-    draft.roles = draft.roles.concat(action.roles);
+    draft.roles = draft.roles.concat(action.role);
   });
 
 const updateRoleFailure = (state = INITIAL_STATE): IRoleObg =>

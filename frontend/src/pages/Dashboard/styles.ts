@@ -7,7 +7,7 @@ export const EmployeeContainer = styled.div`
   margin: 0 auto;
   padding: 40px 0px 40px 10px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 32px;
 `;
 

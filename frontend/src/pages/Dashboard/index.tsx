@@ -39,6 +39,8 @@ const Dashboard: React.FC = () => {
     {} as IEmployee,
   );
   const [editingRole, setEditingRole] = useState<IRole>({} as IRole);
+  const [editRole, setEditRole] = useState<boolean>(false);
+
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
 
@@ -70,12 +72,12 @@ const Dashboard: React.FC = () => {
 
   // role handles
   async function handleAddRole(role: IEditRole): Promise<void> {
-    console.log(role);
     dispatch(addRoleRequest(role));
   }
 
   async function handleUpdateRole(role: IEditRole, id: number): Promise<void> {
     dispatch(updateRoleRequest(role, id));
+    setEditRole(false);
   }
 
   async function handleDeleteRole(id: number): Promise<void> {
@@ -84,6 +86,7 @@ const Dashboard: React.FC = () => {
 
   function handleEditRole(role: IRole): void {
     setEditingRole(role);
+    setEditRole(true);
   }
 
   // employee handles
@@ -118,6 +121,16 @@ const Dashboard: React.FC = () => {
     setEditModalOpen(!editModalOpen);
   }
 
+  function handleButton(data: any, { reset }: any) {
+    if (editRole) {
+      handleUpdateRole(data, editingRole._id);
+    } else {
+      handleAddRole(data);
+    }
+
+    reset();
+  }
+
   return (
     <Container>
       <Header openModal={toggleModal} />
@@ -132,6 +145,7 @@ const Dashboard: React.FC = () => {
         setIsOpen={toggleEditModal}
         editingEmployee={editingEmployee}
         handleUpdateEmployee={handleUpdateEmployee}
+        roles={roles}
       />
 
       <Body>
@@ -148,14 +162,18 @@ const Dashboard: React.FC = () => {
         </EmployeeContainer>
         <Divider />
         <RoleContainer>
-          <Form ref={formRef} onSubmit={handleAddRole}>
+          <Form
+            ref={formRef}
+            onSubmit={handleButton}
+            initialData={editRole ? editingRole : {}}
+          >
             <InputWrapper>
               <Input name="description" placeholder="Novo Cargo" />
             </InputWrapper>
 
             <ButtonWapper>
               <Button type="submit">
-                <Text>Add Cargo</Text>
+                <Text>{editRole ? 'Editar cargo' : 'Add Cargo'}</Text>
                 <Icon>
                   <FiPlusSquare size={20} />
                 </Icon>

@@ -17,7 +17,7 @@ const Role: React.FC<IProps> = ({
   handleDelete,
   handleEditRole,
 }: IProps) => {
-  function setEditingEmployee(): void {
+  function setEditingRole(): void {
     handleEditRole(role);
   }
 
@@ -27,7 +27,7 @@ const Role: React.FC<IProps> = ({
         <TextInfo>Descrição: {role.description}</TextInfo>
       </Body>
       <Footer>
-        <Button type="button" onClick={() => setEditingEmployee()}>
+        <Button type="button" onClick={() => setEditingRole()}>
           <FiEdit3 size={15} />
         </Button>
 

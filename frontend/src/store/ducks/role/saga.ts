@@ -27,6 +27,7 @@ export function* updateRole({ role, id }: any) {
   const { updateRoleSuccess, updateRoleFailure } = RolesActions;
   try {
     const response = yield call(api.put, `/roles/${id}`, role);
+    console.log(response.data);
     yield put(updateRoleSuccess(response.data));
   } catch (error) {
     yield put(updateRoleFailure());
