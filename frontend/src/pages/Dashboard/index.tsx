@@ -168,7 +168,11 @@ const Dashboard: React.FC = () => {
             initialData={editRole ? editingRole : {}}
           >
             <InputWrapper>
-              <Input name="description" placeholder="Novo Cargo" />
+              {editRole ? (
+                <Input name="description" placeholder="Editar Cargo" />
+              ) : (
+                <Input name="description" placeholder="Novo Cargo" />
+              )}
             </InputWrapper>
 
             <ButtonWapper>

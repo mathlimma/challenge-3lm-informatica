@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { FiEdit3, FiTrash } from 'react-icons/fi';
 
@@ -41,10 +41,10 @@ const Employee: React.FC<IProps> = ({
         <Image src={image} alt={Employee.name} />
       </Header>
       <Body>
-        <TextName>{`${employee.name} ${employee.secondName}`}</TextName>
-        <TextDescription>{employee.role.description}</TextDescription>
-        <TextInfo>Salário R$ : {employee.salary}</TextInfo>
-        <TextInfo>Data de Nascimento: {employee.birth}</TextInfo>
+        <TextName>{`${employee?.name} ${employee?.secondName}`}</TextName>
+        <TextDescription>{employee?.role?.description}</TextDescription>
+        <TextInfo>Salário R$ : {employee?.salary}</TextInfo>
+        <TextInfo>Data de Nascimento: {employee?.birth}</TextInfo>
       </Body>
       <Footer>
         <Button type="button" onClick={() => setEditingEmployee()}>

@@ -24,7 +24,7 @@ const Role: React.FC<IProps> = ({
   return (
     <Container>
       <Body>
-        <TextInfo>Descrição: {role.description}</TextInfo>
+        <TextInfo>Descrição: {role?.description}</TextInfo>
       </Body>
       <Footer>
         <Button type="button" onClick={() => setEditingRole()}>
